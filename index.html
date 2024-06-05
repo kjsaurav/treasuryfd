@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f8ff; /* Light blue background */
+            background-color: #87beee; /* Light blue background */
             font-family: Arial, sans-serif;
         }
         .center-box {
@@ -46,7 +46,7 @@
             color: white;
         }
         .button-container .btn-secondary {
-            background-color: #6c757d;
+            background-color: #ed4149;
             color: white;
         }
         .button-container .active {
@@ -90,6 +90,7 @@
             background-color: #007bff;
             color: white;
         }
+
         .result-container {
             margin-top: 20px;
             display: none;
@@ -102,7 +103,16 @@
         #result{
             color: red;
         }
-
+        
+         .interest {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ed4149;
+            color: white;
+        }
         .flex{
             display: flexbox;
         }
@@ -130,6 +140,24 @@
             border-radius: 3px;
             width: 67px;
         }
+        
+        #mi{
+            margin-top: 10px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-weight: bold; 
+            color: #007bff;
+        }
+        #percentage {
+            margin-top: 10px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        h4{
+            margin: 10px;
+        }
 
         .footer {
               font-family: "Lucida Console", "Courier New", monospace;
@@ -141,8 +169,8 @@
     <div class="center-box">
         <h1>Kerala Treasury FD</h1>
         <div class="button-container">
-            <button class="btn-primary" onclick="showForm('login', this)">EPI</button>
-            <button class="btn-secondary" onclick="showForm('signup', this)">Button 2</button>
+            <button class="btn-primary" onclick="showForm('signup', this)">Interest</button>
+            <button class="btn-secondary" onclick="showForm('login', this)">EPI</button>
         </div>
         <div id="login-form" class="form-container">
             <h3>Fill the details</h3>
@@ -159,9 +187,9 @@
             <input type="text" id="date1" placeholder="FD start date(dd-mm-yyyy)" required>
             <input type="text" id="date2" placeholder="FD closing date (dd-mm-yyyy)" required>
         </form>
-            <button id="calc" onclick=" myFunction();calculateDateDifference()">Calculate EPI</button>
+            <button id="calc" onclick=" myFunction();calculateDateDifference()">Calculate</button>
        
-            <p id="demo1"></p>
+            <!-- <p id="demo1"></p> -->
             <p id="demo2"></p>
             <h1 id="result" class="result-container"></h1>
             <p class="footer">Made by SKJ</p>
@@ -169,17 +197,20 @@
             
         </div>
         <div id="signup-form" class="form-container1">
-            <h2>Sign Up</h2>
-            <input class="form1" type="text" placeholder="Amount">
+            <h4>Calculate monthly interest</h4>
+            <input class="form1" type="text"  placeholder="Amount">
             <div class="form-row">
-                <input type="text" placeholder="Year">
-                <input type="text" placeholder="Month">
-                <input type="text" placeholder="Day">
-                <input type="text" placeholder="Week">
+         <input type="number" id="input1" oninput="sum()" placeholder="Year">
+         <input type="number" id="input2" oninput="sum()" placeholder="Month">
+         <input type="number" id="input3" oninput="sum()" placeholder="Week">
+         <input type="number" id="input4" oninput="sum()" placeholder="Day">    
             </div>
-            <h4 class="perc"></h4>
-            <!-- <input class="form1" type="password" placeholder="Password"> -->
-            <button>Sign Up</button>
+         <div id="percentage"></div>
+            <button class="interest" onclick="interest()">Submit</button>
+            <div id="mi"></div>
+            <p class="footer">Made by SKJ</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4LJX8Y6jxlRfQa8HRF8AHcXdIgq8eJ2JcQj0-51DdZy0o_A/viewform?usp=sf_link">Submit you suggestions</a>
+            
         </div>
     </div>
 
@@ -212,7 +243,7 @@
                   var actual=(a*c*d)/(365*100);
                   var current=(a*t*d)/(365*100);  
                   var e=actual-current;
-                  document.getElementById("demo1").innerHTML=`Paid interest for ${d} days is ${parseInt(actual)} Rupees`;
+                  //document.getElementById("demo1").innerHTML=`Paid interest for ${d} days is ${parseInt(actual)} Rupees`;
 
                   document.getElementById("demo2").innerHTML=`Penalty percentage: ${t}`;
                 
@@ -262,7 +293,7 @@
             }
             else{
                   interest=7.5;
-                  ep=excessint(amount,currint,interest,differenceInDays);
+                  var ep=excessint(amount,currint,interest,differenceInDays);
             }
 
 
@@ -271,8 +302,64 @@
             resultContainer.style.display = 'block';
             resultContainer.innerHTML = `Epi: ${ep} Rupees`;
             
+    }
+
+    function sum() {
+
+            let xo = document.getElementById('input1').value;
+            let yo = document.getElementById('input2').value;
+            let wo = document.getElementById('input3').value;
+            let zo = document.getElementById('input4').value;
+
+            let ao = document.getElementsByClassName("form1");
+
             
+            let years= 365*Number(xo);
+            let months= 30*Number(yo);
+            let weeks=7*Number(wo);
+        
+            let sum = years + months + weeks + Number(zo);
+
+            let resultDiv = document.getElementById('percentage');
+            
+            if(sum==0){
+                resultDiv.textContent = ``;
+            }
+            else if (sum>=1&&sum<=60 ) {
+                var pr=5.4;
+                resultDiv.textContent = `Percentage:${pr}`;
+                
+            } else if(sum>60&&sum<=90){
+                var pr=5.9;
+                resultDiv.textContent = `Percentage:${pr}`;
+            }
+            else if(sum>90&&sum<=365){
+                var pr=6.4;
+                resultDiv.textContent = `Percentage:${pr}`;
+            }
+            else if(sum>365&sum<=730){
+                var pr=7;
+                resultDiv.textContent = `Percentage:${pr}`;
+            }
+            else {
+                var pr=7.5;
+                resultDiv.textContent = `Percentage:${pr}`
+            }
+        
+            return pr;
         }
+
+        function interest(){
+                let mo = document.getElementsByClassName("form1");
+                let pm = sum();
+                let i= (mo[0].value*pm)/1200;
+                let resultDiv2 = document.getElementById('mi');
+                resultDiv2.textContent = `${parseFloat(i)} Rupees`;
+                
+                 
+
+
+            }
     </script>
     
 </body>
