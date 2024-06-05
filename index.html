@@ -74,7 +74,8 @@
         }
         
         
-        .form1 {
+
+        .frm , .form1{
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -101,6 +102,7 @@
         }
 
         #result{
+            font-size: 30px;
             color: red;
         }
         
@@ -198,7 +200,7 @@
         </div>
         <div id="signup-form" class="form-container1">
             <h4>Calculate monthly interest</h4>
-            <input class="form1" type="text"  placeholder="Amount">
+            <input class="frm" type="text"  placeholder="Amount">
             <div class="form-row">
          <input type="number" id="input1" oninput="sum()" placeholder="Year">
          <input type="number" id="input2" oninput="sum()" placeholder="Month">
@@ -206,7 +208,8 @@
          <input type="number" id="input4" oninput="sum()" placeholder="Day">    
             </div>
          <div id="percentage"></div>
-            <button class="interest" onclick="interest()">Submit</button>
+         
+            <button class="interest" onclick="intrst()">Submit</button>
             <div id="mi"></div>
             <p class="footer">Made by SKJ</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4LJX8Y6jxlRfQa8HRF8AHcXdIgq8eJ2JcQj0-51DdZy0o_A/viewform?usp=sf_link">Submit you suggestions</a>
@@ -300,7 +303,7 @@
             // Display the result
             const resultContainer = document.getElementById('result');
             resultContainer.style.display = 'block';
-            resultContainer.innerHTML = `Epi: ${ep} Rupees`;
+            resultContainer.innerHTML = `${Math.round(ep)} Rupees`;
             
     }
 
@@ -311,7 +314,7 @@
             let wo = document.getElementById('input3').value;
             let zo = document.getElementById('input4').value;
 
-            let ao = document.getElementsByClassName("form1");
+            let ao = document.getElementsByClassName("frm");
 
             
             let years= 365*Number(xo);
@@ -349,12 +352,12 @@
             return pr;
         }
 
-        function interest(){
-                let mo = document.getElementsByClassName("form1");
+        function intrst(){
+                let mo = document.getElementsByClassName("frm");
                 let pm = sum();
                 let i= (mo[0].value*pm)/1200;
                 let resultDiv2 = document.getElementById('mi');
-                resultDiv2.textContent = `${parseFloat(i)} Rupees`;
+                resultDiv2.textContent = `${Math.round(i)} Rupees`;
                 
                  
 
