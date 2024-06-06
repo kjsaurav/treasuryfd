@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Box Example</title>
+    <title>FD Epi</title>
     <script src="words.js"></script>
     <style>
         body {
@@ -167,6 +167,11 @@
             margin-bottom: 10px;
         }
 
+        #epamnt{
+            margin-top: 2px;
+            font-size: 20px;
+        }
+
         .footer {
               font-family: "Lucida Console", "Courier New", monospace;
               font-size: 20px;
@@ -201,6 +206,7 @@
             <!-- <p id="demo1"></p> -->
             <p id="demo2"></p>
             <h1 id="result" class="result-container"></h1>
+            <div id="epamnt"></div>
             <p class="footer">Made by SKJ</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4LJX8Y6jxlRfQa8HRF8AHcXdIgq8eJ2JcQj0-51DdZy0o_A/viewform?usp=sf_link">Submit you suggestions</a>
             
@@ -262,17 +268,20 @@
                   var p = Number(p);
                   var c=Number(c);
                   var d=Number(d);
-                  var t=p-1;
-                  var actual=(a*c*d)/(365*100);
-                  var current=(a*t*d)/(365*100);  
-                  var e=actual-current;
-                  //document.getElementById("demo1").innerHTML=`Paid interest for ${d} days is ${parseInt(actual)} Rupees`;
-
-                  document.getElementById("demo2").innerHTML=`Penalty percentage: ${t}`;
-                
-            return parseInt(e);
-             
-            }
+                  if(p==0){
+                    var actual=(a*c*d)/(365*100);
+                    return parseInt(actual);
+                  }
+                  else{
+                      var t=p-1;
+                      var actual=(a*c*d)/(365*100);
+                      var current=(a*t*d)/(365*100);  
+                      var e=actual-current;
+                      document.getElementById("demo2").innerHTML=`Penalty percentage: ${t}`;
+                      return parseInt(e);
+                  }
+                  
+              }
 
         function calculateDateDifference() {
             
@@ -294,36 +303,48 @@
             const differenceInTime = secondDate - firstDate;
             // Calculate the difference in days
             const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-            
+        
 
             if (differenceInDays<=60 ){
                    interest=5.4;
                    ep=excessint(amount,currint,interest,differenceInDays);
+                   epa=excessint(amount,currint,interest,day2);
+                 
                    
 
             } else if(differenceInDays>60 && differenceInDays<=90){
                   interest=5.9;
-                   ep=excessint(amount,currint,interest,differenceInDays);
+                  ep=excessint(amount,currint,interest,differenceInDays);
+                  epa=excessint(amount,currint,interest,day2);
+                  
                  
             }
             else if(differenceInDays>90 && differenceInDays<=366){
-                  interest=6.4;
+                   interest=6.4;
                    ep=excessint(amount,currint,interest,differenceInDays);
+                   epa=excessint(amount,currint,interest,day2);
+                     
             }
             else if(differenceInDays>366 && differenceInDays<=731){
                   interest=7;
-                   ep=excessint(amount,currint,interest,differenceInDays);
+                  ep=excessint(amount,currint,interest,differenceInDays);
+                  epa=excessint(amount,currint,interest,day2);
+                   
             }
             else{
                   interest=7.5;
-                  var ep=excessint(amount,currint,interest,differenceInDays);
+                  ep=excessint(amount,currint,interest,differenceInDays);
+                  epa=excessint(amount,currint,0,day2);
+                   
             }
 
 
             // Display the result
             const resultContainer = document.getElementById('result');
             resultContainer.style.display = 'block';
-            resultContainer.innerHTML = `${Math.round(ep)} Rupees`;
+            exact=ep-epa;
+            resultContainer.innerHTML = `EPI: ${Math.round(ep)} Rupees`;
+            document.getElementById("epamnt").innerHTML = `Excess Passed Amount:${Math.round(exact)} Rupees`;
             
     }
 
