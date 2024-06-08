@@ -305,21 +305,26 @@
             const differenceInDays = differenceInTime / (1000 * 3600 * 24);
         
 
-            if (differenceInDays<=60 ){
-                   interest=5.4;
+            if (differenceInDays<=45 ){
+                   interest=0;
                    ep=excessint(amount,currint,interest,differenceInDays);
                    epa=excessint(amount,currint,interest,day2);
-                 
+            }
+            else if (sum>45&&sum<=90 ) {
+                interest=5.4;
+                ep=excessint(amount,currint,interest,differenceInDays);
+                epa=excessint(amount,currint,interest,day2);
+                
+            }  
                    
-
-            } else if(differenceInDays>60 && differenceInDays<=90){
+            else if(differenceInDays>91 && differenceInDays<=180){
                   interest=5.9;
                   ep=excessint(amount,currint,interest,differenceInDays);
                   epa=excessint(amount,currint,interest,day2);
                   
                  
             }
-            else if(differenceInDays>90 && differenceInDays<=366){
+            else if(differenceInDays>180 && differenceInDays<=366){
                    interest=6.4;
                    ep=excessint(amount,currint,interest,differenceInDays);
                    epa=excessint(amount,currint,interest,day2);
@@ -369,15 +374,19 @@
             if(sum==0){
                 resultDiv.textContent = ``;
             }
-            else if (sum>=1&&sum<=60 ) {
+            else if (sum>0&&sum<=45 ) {
+                var pr=1;
+                resultDiv.textContent = `Percentage:${pr}`;
+            }
+            else if (sum>45&&sum<=90 ) {
                 var pr=5.4;
                 resultDiv.textContent = `Percentage:${pr}`;
                 
-            } else if(sum>60&&sum<=90){
+            } else if(sum>90&&sum<=180){
                 var pr=5.9;
                 resultDiv.textContent = `Percentage:${pr}`;
             }
-            else if(sum>90&&sum<=365){
+            else if(sum>180&&sum<=365){
                 var pr=6.4;
                 resultDiv.textContent = `Percentage:${pr}`;
             }
