@@ -208,8 +208,9 @@
             <p id="demo2"></p>
             <h1 id="result" class="result-container"></h1>
             <div id="epamnt"></div>
-            <p class="footer">Made by SKJ</p>
+             <p class="footer"><a href="https://wa.me/9446945462">Made by SKJ</a> </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4LJX8Y6jxlRfQa8HRF8AHcXdIgq8eJ2JcQj0-51DdZy0o_A/viewform?usp=sf_link">Submit your suggestions</a>
+            <p>Version 1.1</p>
             
         </div>
         <div id="signup-form" class="form-container1">
@@ -226,8 +227,9 @@
          
             <button class="interest" onclick="intrst()">Submit</button>
             <div id="mi"></div>
-            <p class="footer">Made by SKJ</p>
+            <p class="footer"><a href="https://wa.me/9446945462">Made by SKJ</a> </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4LJX8Y6jxlRfQa8HRF8AHcXdIgq8eJ2JcQj0-51DdZy0o_A/viewform?usp=sf_link">Submit your suggestions</a>
+            <p>Version 1.1</p>
             
         </div>
     </div>
@@ -349,8 +351,15 @@
             const resultContainer = document.getElementById('result');
             resultContainer.style.display = 'block';
             exact=ep-epa;
-            resultContainer.innerHTML = `EPI: ${Math.round(ep)} Rupees`;
-            document.getElementById("epamnt").innerHTML = `Excess Passed Amount:${Math.round(exact)} Rupees`;
+            //version1
+            //resultContainer.innerHTML = `EPI: ${Math.round(ep)} Rupees`;
+            //document.getElementById("epamnt").innerHTML = `Excess Passed Amount:${Math.round(exact)} Rupees`;
+
+            //version2
+            value= Math.round(exact) - 1000
+            value = value < 0 ? 0 : value;
+            resultContainer.innerHTML = `EPA:${Math.round(exact)} Rupees`;
+            document.getElementById("epamnt").innerHTML = `Exact amount in between ${value} Rs. -${Math.round(exact) + 1000} Rs.`
             
     }
 
