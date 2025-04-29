@@ -361,10 +361,10 @@
             //document.getElementById("epamnt").innerHTML = `Excess Passed Amount:${Math.round(exact)} Rupees`;
 
             //version2
-            value= Math.round(exact) - 1500
+            value= Math.round(exact) - 1000
             value = value < 0 ? 0 : value;
-            resultContainer.innerHTML = `EPA:${Math.round(epa)} Rupees`;
-            document.getElementById("epamnt").innerHTML = `Exact EPI in between ${value} and ${Math.round(exact) + 1500} Rs.`
+            resultContainer.innerHTML = `EPI:${Math.round(exact)} Rupees`;
+            document.getElementById("epamnt").innerHTML = `Exact EPI in between ${value} and ${Math.round(exact) + 1000} Rs.`
             
     }
 
