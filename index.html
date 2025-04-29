@@ -312,32 +312,32 @@
             if (differenceInDays<=45 ){
                    interest=0;
                    ep=excessint(amount,currint,interest,differenceInDays);
-                   epa=excessint(amount,currint,interest,day2);
+                   epa=excessint(amount,currint,0,day2);
             }
             else if (sum>45&&sum<=90 ) {
                 interest=5.4;
                 ep=excessint(amount,currint,interest,differenceInDays);
-                epa=excessint(amount,currint,interest,day2);
+                epa=excessint(amount,currint,0,day2);
                 
             }  
                    
             else if(differenceInDays>91 && differenceInDays<=180){
                   interest=5.9;
                   ep=excessint(amount,currint,interest,differenceInDays);
-                  epa=excessint(amount,currint,interest,day2);
+                  epa=excessint(amount,currint,0,day2);
                   
                  
             }
             else if(differenceInDays>180 && differenceInDays<=366){
                    interest=6;
                    ep=excessint(amount,currint,interest,differenceInDays);
-                   epa=excessint(amount,currint,interest,day2);
+                   epa=excessint(amount,currint,0,day2);
                      
             }
             else if(differenceInDays>366 && differenceInDays<=731){
                   interest=7;
                   ep=excessint(amount,currint,interest,differenceInDays);
-                  epa=excessint(amount,currint,interest,day2);
+                  epa=excessint(amount,currint,0,day2);
                    
             }
             else{
