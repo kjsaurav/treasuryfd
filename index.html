@@ -282,7 +282,7 @@
                       var current=(a*t*d)/(365*100);  
                       var e=actual-current;
                       document.getElementById("demo2").innerHTML=`Penalty percentage: ${t}`;
-                      return parseInt(e);
+                      return parseInt(actual);
                   }
                   
               }
@@ -359,7 +359,7 @@
             //version2
             value= Math.round(exact) - 1500
             value = value < 0 ? 0 : value;
-            resultContainer.innerHTML = `EPA:${Math.round(day2)} Rupees`;
+            resultContainer.innerHTML = `EPA:${Math.round(ep)} Rupees`;
             document.getElementById("epamnt").innerHTML = `Exact EPI in between ${value} Rs.and ${Math.round(exact) + 1500} Rs.`
             
     }
