@@ -304,9 +304,9 @@
             const secondDate = new Date(`${year2}-${month2}-${day2}`);
 
             // Calculate the difference in time
-            const differenceInTime = secondDate - firstDate;
+            const differenceInDays = secondDate - firstDate;
             // Calculate the difference in days
-            const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+            //const differenceInDays = differenceInTime / (1000 * 3600 * 24);
         
 
             if (differenceInDays<=45 ){
@@ -317,33 +317,33 @@
             else if (sum>45&&sum<=90 ) {
                 interest=5.4;
                 ep=excessint(amount,currint,interest,differenceInDays);
-                epa=excessint(amount,currint,0,day2);
+                epa=excessint(amount,currint,interest,day2);
                 
             }  
                    
             else if(differenceInDays>91 && differenceInDays<=180){
                   interest=5.9;
                   ep=excessint(amount,currint,interest,differenceInDays);
-                  epa=excessint(amount,currint,0,day2);
+                  epa=excessint(amount,currint,interest,day2);
                   
                  
             }
             else if(differenceInDays>180 && differenceInDays<=366){
                    interest=6;
                    ep=excessint(amount,currint,interest,differenceInDays);
-                   epa=excessint(amount,currint,0,day2);
+                   epa=excessint(amount,currint,interest,day2);
                      
             }
             else if(differenceInDays>366 && differenceInDays<=731){
                   interest=7;
                   ep=excessint(amount,currint,interest,differenceInDays);
-                  epa=excessint(amount,currint,0,day2);
+                  epa=excessint(amount,currint,interest,day2);
                    
             }
             else{
                   interest=7.5;
                   ep=excessint(amount,currint,interest,differenceInDays);
-                  epa=excessint(amount,currint,0,day2);
+                  epa=excessint(amount,currint,interest,day2);
                    
             }
 
@@ -353,7 +353,7 @@
             resultContainer.style.display = 'block';
             exact=ep-epa;
             //version1
-            //resultContainer.innerHTML = `EPI: ${Math.round(differenceInTime)} Rupees`;
+            //resultContainer.innerHTML = `EPI: ${Math.round(epa)} Rupees`;
             //document.getElementById("epamnt").innerHTML = `Excess Passed Amount:${Math.round(exact)} Rupees`;
 
             //version2
