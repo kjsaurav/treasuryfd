@@ -329,7 +329,7 @@
                  
             }
             else if(differenceInDays>180 && differenceInDays<=366){
-                   interest=6.4;
+                   interest=6;
                    ep=excessint(amount,currint,interest,differenceInDays);
                    epa=excessint(amount,currint,interest,day2);
                      
@@ -398,7 +398,7 @@
                 resultDiv.textContent = `Percentage:${pr}`;
             }
             else if(sum>180&&sum<=365){
-                var pr=6.4;
+                var pr=6;
                 resultDiv.textContent = `Percentage:${pr}`;
             }
             else if(sum>365&sum<=730){
